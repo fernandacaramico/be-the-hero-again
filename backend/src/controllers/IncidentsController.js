@@ -7,7 +7,7 @@ module.exports = {
     const [count] = await connection('incidents').count(); // pega o total de casos
 
     const incidents = await connection('incidents')
-      .join('ongs', 'ong_id', '=', 'incidents.ong_id') // podendo mostrar o numero total de incidentes
+      .join('ongs', 'ongs.id', '=', 'incidents.ong_id') // podendo mostrar o numero total de incidentes
       .limit(5) // criando paginacao
       .offset((page - 1) * 5) // criando paginacao
       .select(['incidents.*', 
